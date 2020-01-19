@@ -1,15 +1,17 @@
 {{ define "main" }}
 
+<!--  post.html -->
 {{ partial "page-title.html" . }}
 
 <section class="section blog-wrap border-bottom">
+  <!-- <h1>Hello</h1> -->
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
         <div class="row">
           <div class="col-lg-12 mb-5">
             <div class="single-blog-item ">
-              <img src="{{ .Params.Image | relURL }}" alt="{{ .Title | markdownify }}" class="img-fluid w-100">
+              <!-- <img src="{{ .Params.Image | relURL }}" alt="{{ .Title | markdownify }}" class="img-fluid w-100"> -->
               <div class="blog-item-meta mt-4 mb-3">
                 <span class="text-black mr-4"><i class="ti-time mr-1"></i> {{ .PublishDate.Format "January 02, 2006" }}</span>
                 <span class="text-black mr-3">by {{ .Params.Author }}</span>
@@ -29,7 +31,7 @@
           </div>
         </div>
       </div>
-      {{ partial "sidebar.html" . }}
+      <!-- {{ partial "sidebar.html" . }} -->
     </div>
   </div>
 </section>

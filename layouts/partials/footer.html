@@ -5,20 +5,28 @@
         <div class="footer-widget">
           <a class="mb-4 d-inline-block" href="{{ .Site.BaseURL }}">
             {{ if .Site.Params.logo }}
-            <img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}">
+            <img src="{{ .Site.Params.logo | absURL }}" id="footer-logo" alt="{{ .Site.Title }}">
             {{ else }}
             <h2 class="mb-0 text-dark">{{ .Site.Title }}</h2>
             {{ end }}
           </a>
-          <p class="mb-4">{{ .Site.Params.footer.content | markdownify }}</p>
+          <a class="mb-4 d-inline-block" href="{{ .Site.BaseURL }}">
+            {{/*  {{ if .Site.Params.logo }}  */}}
+            {{/*  <img src="{{ .Site.Params.logo | absURL }}" id="footer-logo" alt="{{ .Site.Title }}">  */}}
+            {{/*  {{ else }}  */}}
+            <h2 class="mb-0 text-dark">{{ .Site.Title }}</h2>
+            {{/*  {{ end }}  */}}
+          </a>
+          
+          <p class="mb-4">{{ (index .Site.Params.Footer .Site.Language.Lang).content }}</p>
         </div>
       </div>
 
       <div class="col-lg-6">
         <div class="subscribe">
-          <h4 class="mb-4">Get up to 20% Discount</h4>
-          <input type="text" class="form-control mb-4" placeholder="Put your email address">
-          <a href="#" class="btn btn-main">Download Now<i class="ti-angle-right ml-3"></i></a>
+          {{/*  <h4 class="mb-4">Get up to 20% Discount</h4>  */}}
+          {{/*  <input type="text" class="form-control mb-4" placeholder="Put your email address">  */}}
+          {{/*  <a href="#" class="btn btn-main">Download Now<i class="ti-angle-right ml-3"></i></a>  */}}
         </div>
       </div>
     </div>
@@ -34,7 +42,13 @@
       </div>
       <div class="col-lg-6">
         <div class="footer-btm-menu text-lg-right">
-          <img src="{{`images/about/cards-3.png` | relURL }}" alt="" class="img-fluid">
+          {{/*  <img src="{{`images/about/cards-3.png` | relURL }}" id="footer-logo" alt="" class="img-fluid" >  */}}
+          <p>
+          {{ (index .Site.Params.Footer .Site.Language.Lang).madein | markdownify }}
+          </p>
+          <p class="footer-copy">
+            {{/*  {{ .Site.Params.footer.madein | markdownify }}  */}}
+          </p>
         </div>
       </div>
     </div>
@@ -47,13 +61,13 @@
 {{ end }}
 
 <!-- snipcart -->
-<script type="text/javascript" id="snipcart" src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
+{{/*  <script type="text/javascript" id="snipcart" src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
   data-api-key="M2E5YjA3NjMtYzRiYS00YzVjLWEyYWYtNDY5ZDI0OWZhYjg5"></script>
 <script>
   Snipcart.execute('registerLocale', 'en', {
     powered_by: "Themefisher"
   });
-</script>
+</script>  */}}
 
 {{ "<!-- Main Script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | minify}}

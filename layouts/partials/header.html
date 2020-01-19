@@ -1,12 +1,16 @@
 <div class="main-navigation fixed-top site-header" id="mainmenu-area">
   <nav class="navbar navbar-expand-lg ">
     <div class="container align-items-center">
-      <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+      <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
         {{ if .Site.Params.logo }}
         <img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}">
+        {{/*  <h2 class="mb-0 text-color">{{ .Site.Title }}</h2>  */}}
         {{ else }}
-        <h2 class="mb-0 text-color">{{ .Site.Title }}</h2>
+        {{/*  <h2 class="mb-0 text-color ">{{ .Site.Title }}</h2>  */}}
         {{ end }}
+      </a>
+      <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL  }}">
+        <h2 class="mb-0 text-color">{{ .Site.Title }}</h2>
       </a>
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarmain"
@@ -19,29 +23,43 @@
         <!-- Links -->
         <ul class="navbar-nav ml-auto">
           {{ if .IsHome }}
-          {{ range .Site.Menus.main }}
-          <li class="nav-item">
-            <a class="nav-link smoth-scroll" href="#{{ .URL }}">{{ .Name }}</a>
-          </li>
-          {{ end }}
+            {{ range .Site.Menus.main }}
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="{{ .URL | relLangURL }}">{{ i18n .Name | humanize }}</a>
+            </li>
+            {{ end }}
 
           {{ else }}
-
-          {{ range .Site.Menus.main }}
-          <li class="nav-item">
-            <a class="nav-link smoth-scroll" href="{{ $.Site.BaseURL }}#{{ .URL }}">{{ .Name }}</a>
-          </li>
-          {{ end }}
+            {{ range .Site.Menus.main }}
+            <li class="nav-item">
+              <a class="nav-link smoth-scroll" href="{{ $.Site.BaseURL }}{{ .URL | relLangURL }}">{{ i18n .Name }}</a>
+            </li>
+            {{ end }}
+        
+        {{ end }}
         </ul>
+        <!-- Language Switch -->
+        <!-- Note: hardcoded for two languages only -->
+        {{ if eq .Site.Language.Lang "jp" }}
+        {{/*  Switch to English  */}}
+        <a href='{{ string "/" }}'>
+          <button class="btn btn-border-tp btn-small ml-3" style="border-radius: 5px;">English</button>
+        </a>
+        {{ else }}
+        {{/*  Switch to Japanese */}}
+        <a href='{{ string "jp" | relLangURL }}'>
+          <button class="btn btn-border-tp btn-small ml-3" style="border-radius: 5px;">日本語</button>
+        </a>
         {{ end }}
-
-        {{ if .Site.Params.navButton.enable }}
+                    
+        {{/*  {{ if .Site.Params.navButton.enable }}
         {{ "<!-- nav btn -->" | safeHTML }}
-          <button class="snipcart-add-item btn btn-border-tp btn-small ml-3" data-item-id="1"
-          data-item-name="{{ .Site.Data.homepage.banner.title | markdownify }}" data-item-image="{{ .Site.Data.homepage.banner.image | absURL }}" data-item-price="{{ .Site.Data.homepage.banner.price }}" data-item-url="/">
-          Purchase now
-        </button>
-        {{ end }}
+        <a href="{{ .Site.Params.signup | safeURL }}">
+          <button class="btn btn-border-tp btn-small ml-3">{{ T "signup" }}!</button>
+        </a>
+        {{ end }}  */}}
+        
+
       </div>
     </div>
   </nav>

@@ -1,4 +1,19 @@
 
+
+.navbar-brand {
+    // overload Bootstrap
+    h2 {
+        color: black;
+    }
+
+    img {
+        width: 120px;
+    }
+
+    margin-right: 0
+}
+
+
 /*-------------------
    MENU
 ----------------------*/
