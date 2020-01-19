@@ -1,14 +1,24 @@
 <div class="main-navigation fixed-top site-header" id="mainmenu-area">
   <nav class="navbar navbar-expand-lg ">
     <div class="container align-items-center">
-      <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
+      <!--a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}"-->
+      <div class="navbar-brand">
         {{ if .Site.Params.logo }}
-        <img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}">
+        <img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}" onclick="document.getElementById('familymart-chime').play()" style="">
+        <audio id="familymart-chime">
+          <source src="familymart-chime.mp3" type="audio/ogg">
+        </audio>
+        <style>
+        .navbar-brand img:hover{
+          cursor:pointer
+        }
+        </style>
         {{/*  <h2 class="mb-0 text-color">{{ .Site.Title }}</h2>  */}}
         {{ else }}
         {{/*  <h2 class="mb-0 text-color ">{{ .Site.Title }}</h2>  */}}
         {{ end }}
-      </a>
+      </div>
+      <!--/a-->
       <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL  }}">
         <h2 class="mb-0 text-color">{{ .Site.Title }}</h2>
       </a>
