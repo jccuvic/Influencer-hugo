@@ -8,7 +8,7 @@ Version      : 1.0
 
 
 // Fonts 
-@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
 html {
     font-family: sans-serif;
@@ -24,6 +24,7 @@ html {
 body {
     font-family: $secondary-font;
     font-size: 16px;
+    
     line-height:30px;
     margin: 0;
     text-align: left;
@@ -39,6 +40,8 @@ body ,html{
 /*--------------------
  TYPOGRAPHY
 -----------------*/
+
+strong { font-weight: bold; }
 
 .h1,
 .h2,
